@@ -492,44 +492,53 @@
 
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
-                                        <label>Nome Completo</label>
+                                        <label class="form-label">Nome Completo</label>
 
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Fulano de Tal"
-                                                       required/>
+                                                <input type="text" class="form-control" placeholder="Fulano de Tal"/>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
+                                        <label>E-mail</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="email" id="email_address" class="form-control"
+                                                       placeholder="exemplo@mail.com" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row clearfix">
+
+                                    <div class="col-sm-1">
                                         <label>CPF</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="111.111.111-11"
-                                                       required/>
+                                                <input type="" class="form-control" placeholder="111.111.111-11"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <label>CRM/RN</label>
 
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="CRM/RN" required/>
+                                                <input type="text" class="form-control" placeholder="CRM/RN"/>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row clearfix">
 
                                     <div class="col-sm-3">
                                         <div class="form-group ">
                                             <label>Data Nascimento</label>
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Data Nascimento"
-                                                       required/>
+                                                <input type="date" class="form-control" placeholder="Data Nascimento"/>
                                             </div>
                                         </div>
                                     </div>
@@ -538,7 +547,7 @@
                                         <div class="form-group ">
                                             <label>Carteira de Identidade</label>
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Data Nascimento"
+                                                <input type="text" class="form-control" placeholder="000.000.000"
                                                        required/>
                                             </div>
                                         </div>
@@ -549,7 +558,7 @@
                                         <div class="form-group ">
                                             <label>Emissor</label>
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Data Nascimento"
+                                                <input type="text" class="form-control" placeholder="SSP"
                                                        required/>
                                             </div>
                                         </div>
@@ -560,7 +569,7 @@
                                         <div class="form-group ">
                                             <label>UF</label>
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Data Nascimento"
+                                                <input type="text" class="form-control" placeholder="RN"
                                                        required/>
                                             </div>
                                         </div>
@@ -569,7 +578,7 @@
 
 
                                 <div class="row clearfix">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label>Endereço</label>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -579,7 +588,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <label>Complemento</label>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -587,6 +596,12 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                </div>
+
+
+                                <div class="row clearfix">
 
                                     <div class="col-sm-4">
                                         <label>Bairro</label>
@@ -596,11 +611,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-
-                                <div class="row clearfix">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <label>CEP</label>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -610,7 +622,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label>Cidade</label>
                                         <div class="form-group">
                                             <div class="form-line">
@@ -632,12 +644,33 @@
                                 </div>
 
                                 <div class="row clearfix">
-                                    <div class="col-sm-6">
-                                        <label>E-mail</label>
+
+                                    <div class="col-sm-2">
+                                        <label>Telefone</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="email" id="email_address" class="form-control"
-                                                       placeholder="exemplo@mail.com" required/>
+                                                <input type="tel"  class="form-control"
+                                                       placeholder="999999999 " required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <label>Celular</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="tel" class="form-control"
+                                                       placeholder="(xx) 99999-9999" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <label>Celular</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="tel" class="form-control"
+                                                       placeholder="(xx) 99999-9999" required/>
                                             </div>
                                         </div>
                                     </div>
