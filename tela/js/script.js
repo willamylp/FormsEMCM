@@ -1,9 +1,9 @@
-﻿$(function(){
-    $(".CaixaMagica").keyup(function(){
-        if($(this).val().length > 0){
-            $(this).parent().parent().find(".CheckboxMagico").prop("checked", true);
+﻿$(function () {
+    $(".CaixaMagica").on("keyup", function (e) {
+        if (this.value != "") {
+            $(".CheckboxMagico").prop("checked", "checked");
         } else {
-            $(this).parent().parent().find(".CheckboxMagico").prop("checked", false);
+            $(".CheckboxMagico").prop('checked', "");
         }
     });
 });
