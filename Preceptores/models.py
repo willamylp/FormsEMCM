@@ -2,7 +2,12 @@ from django.db import models
 from multiselectfield import MultiSelectField
 
 # Create your models here.
-class Preceptores():
+class Preceptores(models.Model):
+    TURNO = (
+        ('Matutino', 'MATUTINO'),
+        ('Vespertino', 'VESPERTINO'),
+        ('Noturno', 'NOTURNO')
+    )
     ESTADOS = (
         ('Acre', 'AC'),
         ('Alagoas', 'AL'),
@@ -37,7 +42,6 @@ class Preceptores():
         ('Residência', 'RESIDENCIA'),
         ('Mestrado', 'MESTRADO'),
         ('Doutorado', 'DOUTORADO')
-
     )
 
     #-->>> INFORMAÇÕES PESSOAIS
@@ -131,7 +135,7 @@ class Preceptores():
         max_length=30,
         blank=False
     )
-
+    
     #-->>> DADOS PROFISSIONAIS
     escolaridade = MultiSelectField(
         blank=False,
@@ -139,17 +143,103 @@ class Preceptores():
         default=''
     )
 
-
-
-
     #####
     num_edital = models.CharField(
         max_length=10,
         blank=False
     )
-
-    objetos = models.Manager()
-
+   
     def __str__(self):
         return self.nome
+
+class Graduacao(models.Model):
+    preceptores = models.ForeignKey(
+        Preceptores,
+        on_delete=models.CASCADE
+    )
+    curso = models.CharField(
+        max_length=50, 
+        blank=False
+    )
+    data_termino = models.DateField(
+        blank=False
+    )
+    instituicao = models.CharField(
+        max_length=50,
+        blank=False
+    )
+    
+    def __str__(self):
+        return self.curso
+
+class Residencia(models.Model):
+    preceptores = models.ForeignKey(
+        Preceptores,
+        on_delete=models.CASCADE
+    )
+    area = models.CharField(
+        max_length=50, 
+        blank=False
+    )
+    data_termino = models.DateField(
+        blank=False
+    )
+    instituicao = models.CharField(
+        max_length=50,
+        blank=False
+    )
+    def __str__(self):
+        return self.area
+
+class Mestrado(models.Model):
+    preceptores = models.ForeignKey(
+        Preceptores,
+        on_delete=models.CASCADE
+    )
+    area = models.CharField(
+        max_length=50, 
+        blank=False
+    )
+    data_termino = models.DateField(
+        blank=False
+    )
+    instituicao = models.CharField(
+        max_length=50,
+        blank=False
+    )
+    def __str__(self):
+        return self.area
+
+class Doutorado(models.Model):
+    preceptores = models.ForeignKey(
+        Preceptores,
+        on_delete=models.CASCADE
+    )
+    area = models.CharField(
+        max_length=50, 
+        blank=False
+    )
+    data_termino = models.DateField(
+        blank=False
+    )
+    instituicao = models.CharField(
+        max_length=50,
+        blank=False
+    )
+    def __str__(self):
+        return self.area
+    
+
+class Vinculo_Profissional(models.Model):
+    preceptores = models.ForeignKey(
+        Preceptores,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name
+    
+
+    
+
     
