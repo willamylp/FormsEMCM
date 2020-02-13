@@ -1,0 +1,17 @@
+* Acidicionar esses bancos como forma de seleção para o usuario que irá se cadastrar
+
+* Alterar o campo Horarios 
+	O usuario irá dizer o turno que ele esta disponivel para dar asstencia aos alunos
+	Ex.: ()Matutino - - - ()Vespertino - - - ()Noturno
+
+* Problema com a tag <select> para deixar no padrão do modelo proposto (vai dar certo... kkk)
+
+* Pesquisar desejadas
+	* Por turno de disponiblidade de Horarios
+	* Por Experiencias
+	* Por quem tiver Doutorado, Mestrado, Especialização	
+
+* Permitir que o usuario insira o arquivo que ele digitalizou após a assinatura
+
+* Alteração do arquivo em para uzar como modelo (nada a temer)  ------> FEITO
+
