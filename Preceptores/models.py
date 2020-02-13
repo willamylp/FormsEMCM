@@ -3,20 +3,11 @@ from multiselectfield import MultiSelectField
 
 # Create your models here.
 class Preceptores(models.Model):
-
-
-# SESAP – HOSPITAL REGIONAL DE CAICÓ
-# SESAP – HOSPITAL REGIONAL MARIANO COELHO
-# SESAP – HOSPITAL GISELDA TRIGUEIRO
-# SESAP – HOSPITAL MONSENHOR WALFREDO GURGEL
-# SESAP – OUTRO: __________________________
-# SMS - CAICÓ
-# SMS - CURRAIS NOVOS
-# SMS - SANTA CRUZ
-# OUTRO: ___________________________
-
-
-    
+    TURNO = (
+        ('Matutino', 'MATUTINO'),
+        ('Vespertino', 'VESPERTINO'),
+        ('Noturno', 'NOTURNO')
+    )
     ESTADOS = (
         ('Acre', 'AC'),
         ('Alagoas', 'AL'),
@@ -51,7 +42,6 @@ class Preceptores(models.Model):
         ('Residência', 'RESIDENCIA'),
         ('Mestrado', 'MESTRADO'),
         ('Doutorado', 'DOUTORADO')
-
     )
 
     #-->>> INFORMAÇÕES PESSOAIS
@@ -152,15 +142,15 @@ class Preceptores(models.Model):
         choices=DADOS_PROFISSIONAIS,
         default=''
     )
-   
-    def __str__(self):
-        return self.nome
 
     #####
     num_edital = models.CharField(
         max_length=10,
         blank=False
     )
+   
+    def __str__(self):
+        return self.nome
 
 class Graduacao(models.Model):
     preceptores = models.ForeignKey(
@@ -240,5 +230,16 @@ class Doutorado(models.Model):
         return self.area
     
 
+class Vinculo_Profissional(models.Model):
+    preceptores = models.ForeignKey(
+        Preceptores,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name
     
+
+    
+
     
