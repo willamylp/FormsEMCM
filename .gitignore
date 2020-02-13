@@ -128,3 +128,6 @@ dmypy.json
 
 .vscode
 ~$delo_ficha_inscricao.docx
+
+
+.idea/
