@@ -43,6 +43,10 @@ class Preceptores(models.Model):
         ('Mestrado', 'MESTRADO'),
         ('Doutorado', 'DOUTORADO')
     )
+    BANCOS = (
+        ('Banco_1', 'BANCO_1'),
+        ('Banco_2', 'BANCO_2')
+    )
 
     #-->>> INFORMAÇÕES PESSOAIS
     nome = models.CharField(
@@ -124,8 +128,9 @@ class Preceptores(models.Model):
 
     #-->>> DADOS BANCÁRIOS
     banco = models.CharField(
-        max_length=50,
-        blank=False
+        blank=False,
+        choices=BANCOS,
+        default=''
     )
     angencia = models.CharField(
         max_length=10,
