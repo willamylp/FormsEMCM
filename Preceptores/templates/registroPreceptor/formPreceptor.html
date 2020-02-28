@@ -192,7 +192,6 @@
                             <fieldset>
                                 <div class="row col-lg-6">
                                     {{ form.banco|add_class:'form-control show-tick'|attr:"data-live-search:true" }}
-
                                     <div class="form-group form-float">
                                         <label>Agência</label>
                                         <div class="form-group">
@@ -218,125 +217,101 @@
                             <h3>DADOS PROFISSIONAIS</h3>
                             <fieldset>
                                 <h2 class="card-inside-title">GRADUAÇÃO</h2>
-
                                 <div class="row clearfix">
-
                                     <div class="col-sm-6">
                                         <label class="form-label">Graduação</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formG.curso|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="col-sm-3">
                                         <label class="form-label">Ano de término</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formG.ano_termino|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-3">
                                         <label class="form-label">Instituição</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formG.instituicao|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-
-                                <h2 class="card-inside-title">RESIDENCIA <small>(Caso não tenha realizado ou
-                                        terminado, passar para o item seguinte)</small> </h2>
+                                <h2 class="card-inside-title">RESIDENCIA <small>(Caso não tenha realizado ou terminado, passar para o item seguinte)</small> </h2>
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
                                         <label class="form-label">ÁREA</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formR.area|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
 
-
                                     <div class="col-sm-3">
                                         <label class="form-label">Ano de término</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formM.ano_termino|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-3">
                                         <label class="form-label">Instituição</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formR.instituicao|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <h2 class="card-inside-title">MESTRADO <small>(Caso não tenha realizado ou
-                                        terminado, passar para o item seguinte)</small></h2>
-
+                                <h2 class="card-inside-title">MESTRADO <small>(Caso não tenha realizado ou terminado, passar para o item seguinte)</small></h2>
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
                                         <label class="form-label">Área </label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formM.area|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="col-sm-3">
                                         <label class="form-label">Ano de término</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formM.ano_termino|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-3">
                                         <label class="form-label">Instituição</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formM.instituicao|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <h2 class="card-inside-title">DOUTORADO <small>(Caso não tenha realizado ou
-                                        terminado, passar para o item seguinte)</small></h2>
-
-
+                                <h2 class="card-inside-title">DOUTORADO <small>(Caso não tenha realizado ou terminado, passar para o item seguinte)</small></h2>
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
                                         <label class="form-label">Área </label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formD.area|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -344,20 +319,18 @@
 
                                     <div class="col-sm-3">
                                         <label class="form-label">Ano de término</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formD.ano_termino|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-3">
                                         <label class="form-label">Instituição</label>
-
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="" />
+                                                {{ formD.instituicao|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -369,11 +342,7 @@
                             <fieldset>
 
                                 <h2 class="card-inside-title">VÍNCULO PROFISSIONAL</h2>
-
                                 <div class="form-group form-float">
-
-
-
                                     <div class="demo-checkbox">
                                         <input type="checkbox"
                                             value="SECRETARIA DE ESTADO DA SAÚDE PÚBLICA – HOSPITAL REGIONAL DE CAICÓ"

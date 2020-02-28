@@ -37,12 +37,7 @@ class Preceptores(models.Model):
         ('Sergipe', 'SE'),
         ('Tocantins', 'TO'),
     )
-    DADOS_PROFISSIONAIS = (
-        ('Graduação', 'GRADUACAO'),
-        ('Residência', 'RESIDENCIA'),
-        ('Mestrado', 'MESTRADO'),
-        ('Doutorado', 'DOUTORADO')
-    )
+
     BANCOS = (
         ('325', 'Órama DTVM S.A.'),
         ('356', 'ABN AMRO S.A'),
@@ -258,15 +253,15 @@ class Preceptores(models.Model):
         ('756', 'BANCOOB'),
         ('629', 'BANCORP BANCO COML. E. DE INVESTMENTO'),
         ('489', 'BANESTO BANCO URUGAUAY S.A'),
-        ('184', 'BBA', 'CREDITANSTALT S.A'),
+        ('184', 'BBA - CREDITANSTALT S.A'),
         ('740', 'BCN BARCLAYS'),
-        ('294', 'BCR', 'BANCO DE CREDITO REAL S.A'),
-        ('370', 'BEAL', 'BANCO EUROPEU PARA AMERICA LATINA'),
+        ('294', 'BCR - BANCO DE CREDITO REAL S.A'),
+        ('370', 'BEAL - BANCO EUROPEU PARA AMERICA LATINA'),
         ('601', 'BFC BANCO S.A.'),
         ('739', 'BGN'),
-        ('639', 'BIG S.A.', 'BANCO IRMAOS GUIMARAES'),
+        ('639', 'BIG S.A. - BANCO IRMAOS GUIMARAES'),
         ('237', 'BRADESCO'),
-        ('070', 'BRB', 'BANCO DE BRASÍLIA'),
+        ('070', 'BRB - BANCO DE BRASÍLIA'),
         ('749', 'BRMSANTIL SA'),
         ('741', 'BRP'),
         ('218', 'BS2'),
@@ -279,7 +274,7 @@ class Preceptores(models.Model):
         ('477', 'CITIBANK N.A'),
         ('175', 'CONTINENTAL BANCO S.A'),
         ('210', 'DEUTSCH SUDAMERIKANICHE BANK AG'),
-        ('487', 'DEUTSCHE BANK S.A', 'BANCO ALEMAO'),
+        ('487', 'DEUTSCHE BANK S.A - BANCO ALEMAO'),
         ('751', 'DRESDNER BANK LATEINAMERIKA-BRASIL S/A'),
         ('742', 'EQUATORIAL'),
         ('492', 'INTERNATIONALE NEDERLANDEN BANK N.V.'),
@@ -288,7 +283,7 @@ class Preceptores(models.Model):
         ('738', 'MARADA'),
         ('323', 'MercadoPago.com Representações Ltda.'),
         ('255', 'MILBANCO S.A.'),
-        ('746', 'MODAL S\\A'),
+        ('746', 'MODAL S.A'),
         ('148', 'MULTI BANCO S.A'),
         ('260', 'NUBANK'),
         ('290', 'PagSeguro Internet S.A.'),
@@ -298,8 +293,8 @@ class Preceptores(models.Model):
         ('748', 'SICREDI'),
         ('744', 'THE FIRST NATIONAL BANK OF BOSTON'),
         ('737', 'THECA'),
-        ('409', 'UNIBANCO', 'UNIAO DOS BANCOS BRASILEIROS'),
-        ('102', 'XP INVESTIMENTOS')
+        ('409', 'UNIBANCO - UNIAO DOS BANCOS BRASILEIROS'),
+        ('102', 'XP INVESTIMENTOS'),
     )
 
     #-->>> INFORMAÇÕES PESSOAIS
@@ -382,6 +377,7 @@ class Preceptores(models.Model):
 
     #-->>> DADOS BANCÁRIOS
     banco = models.CharField(
+        max_length=200,
         blank=False,
         choices=BANCOS,
         default=''
@@ -395,12 +391,12 @@ class Preceptores(models.Model):
         blank=False
     )
     
-    #-->>> DADOS PROFISSIONAIS
-    escolaridade = MultiSelectField(
-        blank=False,
-        choices=DADOS_PROFISSIONAIS,
-        default=''
-    )
+    # #-->>> DADOS PROFISSIONAIS
+    # escolaridade = MultiSelectField(
+    #     blank=False,
+    #     choices=DADOS_PROFISSIONAIS,
+    #     default=''
+    # )
 
     #####
     num_edital = models.CharField(
@@ -420,8 +416,11 @@ class Graduacao(models.Model):
         max_length=50, 
         blank=False
     )
-    data_termino = models.DateField(
-        blank=False
+    ano_termino = models.PositiveIntegerField(
+        default=0, 
+        blank=False,
+        null=False,
+        unique=True
     )
     instituicao = models.CharField(
         max_length=50,
@@ -440,8 +439,11 @@ class Residencia(models.Model):
         max_length=50, 
         blank=False
     )
-    data_termino = models.DateField(
-        blank=False
+    ano_termino = models.PositiveIntegerField(
+        default=0, 
+        blank=False,
+        null=False,
+        unique=True
     )
     instituicao = models.CharField(
         max_length=50,
@@ -459,8 +461,11 @@ class Mestrado(models.Model):
         max_length=50, 
         blank=False
     )
-    data_termino = models.DateField(
-        blank=False
+    ano_termino = models.PositiveIntegerField(
+        default=0, 
+        blank=False,
+        null=False,
+        unique=True
     )
     instituicao = models.CharField(
         max_length=50,
@@ -478,8 +483,11 @@ class Doutorado(models.Model):
         max_length=50, 
         blank=False
     )
-    data_termino = models.DateField(
-        blank=False
+    ano_termino = models.PositiveIntegerField(
+        default=0, 
+        blank=False,
+        null=False,
+        unique=True
     )
     instituicao = models.CharField(
         max_length=50,

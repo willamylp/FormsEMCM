@@ -1,0 +1,130 @@
+{% comment %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    {% include "./head.html" %}
+    <!-- Custom Css -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+<body class="theme-teal">
+    
+    {% include "../PageLoader.html" %}
+
+    <div class="overlay"></div>
+
+    {% include "../Top_Bar.html" %}
+    {% include "./Menu_Left.html" %}
+
+    <section class="content">
+        <div class="body">
+	        <ol class="breadcrumb"><h5>Você está em:</h5>
+                <li>
+                    <a href="{% url 'principal' %}">
+                        <i class="material-icons">home</i> Início
+                    </a>
+                </li>
+                <li>
+                    <i class="material-icons">notifications_active</i> GERENCIAR HOSTS
+                </li>
+                <li  class="active">
+                    <i class="material-icons">playlist_add_check</i> Listar Registros de Hosts
+                </li>
+            </ol>
+	    </div>
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 ">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                LISTAGEM DE HOSTS REGISTRADOS
+                                <a href="{% url 'RegistroHost' %}" class="linkTextBold" style="float: right; margin-top: -10px;">
+                                    <button type="button" class="btn bg-teal waves-effect linkTextBold">
+                                        <i class="material-icons">add</i>
+                                        <span>NOVO REGISTRO</span>
+                                    </button> 
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                {% if hosts|length == 0 %}
+                                <br>
+                                <h2 style="color: red; text-align: center;">NÃO HÁ REGISTROS!</h2>
+                                {% else %}
+                                
+                                <h4 style="color: #17a2b8; text-align: center;">
+                                    <i class="material-icons">info</i>
+                                    <span>Clique no título da coluna para ordenar</span>
+                                </h4>
+                                <h4 style="margin-bottom: -5px; color: #444444;">Exportar Registros</h4>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>HOSTNAME</th>
+                                        <th>SERVIÇO</th>
+                                        <th>PORTA</th>
+                                        <th>TIPO DE HOST</th>
+                                        <th>DESCRIÇÃO</th>
+                                        <th>STATUS</th>
+                                        <th>EDITAR</th>
+                                        <th>DELETAR</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for host in hosts %}
+                                    <tr>
+                                        <td>{{ host.id }}</td>
+                                        <td>
+                                            <strong>{{ host.hostname }}</strong>
+                                        </td>
+                                        <td>{{ host.servico }}</td>
+                                        <td>{{ host.porta }}</td>
+                                        <td>{{ host.tipoHost }}</td>
+                                        <td>{{ host.descricao }}</td>
+                                        <td>
+                                            {% if host.status == False %}
+                                                <b>Offline</b>
+                                            {% else %}
+                                                <b>Online</b>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <a href="{% url 'AtualizarHost' host.id %}">
+                                                    <button type="button" class="btn bg-cyan waves-effect">
+                                                        <i class="material-icons">mode_edit</i>
+                                                    </button>
+                                                </a>
+                                            </center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <button type="button" class="btn bg-red waves-effect" onClick="ConfirmarDelete({{ host.id }})">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </button>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    <br>
+                                </tbody>
+                                {% endif %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% include "../Modal_Info_Sistema.html" %}
+
+    {% include "./scripts.html" %}
+    
+</body> {% endcomment %}
+
+
+<h2> LISTAGEM OK!!! </h2>

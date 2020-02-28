@@ -21,6 +21,7 @@ from django.urls import include, path
 from django.conf.urls.static import static
 
 from Principal import urls as principal_urls
+from Preceptores import urls as preceptopres_urls
 from FormsEMCM.views import loadApp, logoutApp
 
 urlpatterns = [
@@ -33,4 +34,5 @@ urlpatterns = [
 
     path('', include(principal_urls)),
     path('principal/', include(principal_urls)),
+    path('preceptores/', include(preceptopres_urls)),
 ]
