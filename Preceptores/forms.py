@@ -16,19 +16,23 @@ class FormGraduacao(ModelForm):
     class Meta:
         model = Graduacao
         fields = '__all__'
+        labels = {}
         widgets = {}
 class FormResidencia(ModelForm):
     class Meta:
         model = Residencia
         fields = '__all__'
+        labels = {}
         widgets = {}        
 class FormMestrado(ModelForm):
     class Meta:
         model = Mestrado
         fields = '__all__'
+        labels = {}
         widgets = {}
 class FormDoutorado(ModelForm):
     class Meta:
         model = Doutorado
         fields = '__all__'
+        labels = {}
         widgets = {}   

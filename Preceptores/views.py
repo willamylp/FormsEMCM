@@ -21,10 +21,9 @@ def RegistroPreceptor(request):
         formD.save()
         messages.success(request, 'Preceptor Registrado com Sucesso!')
         return redirect('../ListarPreceptores')
-        
     return render(
         request,
-        'listagemPreceptores/ListarPreceptores.html', {
+        'registroPreceptor/RegistrarPreceptor.html', {
             'form': form,
             'formG': formG,
             'formR': formR,

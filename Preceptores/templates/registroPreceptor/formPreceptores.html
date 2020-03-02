@@ -1,5 +1,5 @@
 {% load widget_tweaks %}
-<section class="container" style="height: 900px;">
+<section class="container">
     <div class="container-fluid">
         {% comment %} ---------------------- Formulario preceptores ----------------------------------- {% endcomment %}
         <!-- Advanced Form Example With Validation -->
@@ -21,7 +21,7 @@
                                         <label class="form-label">Nome Completo</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ form.hostname|add_class:'form-control' }}
+                                                {{ form.nome|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -222,7 +222,7 @@
                                         <label class="form-label">Graduação</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formG.curso|add_class:'form-control' }}
+                                                {{ formG.g_curso|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -230,7 +230,7 @@
                                         <label class="form-label">Ano de término</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formG.ano_termino|add_class:'form-control' }}
+                                                {{ formG.g_ano_termino|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -239,7 +239,7 @@
                                         <label class="form-label">Instituição</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formG.instituicao|add_class:'form-control' }}
+                                                {{ formG.g_instituicao|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -251,7 +251,7 @@
                                         <label class="form-label">ÁREA</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formR.area|add_class:'form-control' }}
+                                                {{ formR.r_area|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -260,7 +260,7 @@
                                         <label class="form-label">Ano de término</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formM.ano_termino|add_class:'form-control' }}
+                                                {{ formR.r_ano_termino|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -269,7 +269,7 @@
                                         <label class="form-label">Instituição</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formR.instituicao|add_class:'form-control' }}
+                                                {{ formR.r_instituicao|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -282,7 +282,7 @@
                                         <label class="form-label">Área </label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formM.area|add_class:'form-control' }}
+                                                {{ formM.m_area|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -290,7 +290,7 @@
                                         <label class="form-label">Ano de término</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formM.ano_termino|add_class:'form-control' }}
+                                                {{ formM.m_ano_termino|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -299,7 +299,7 @@
                                         <label class="form-label">Instituição</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formM.instituicao|add_class:'form-control' }}
+                                                {{ formM.m_instituicao|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -311,7 +311,7 @@
                                         <label class="form-label">Área </label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formD.area|add_class:'form-control' }}
+                                                {{ formD.d_area|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -321,7 +321,7 @@
                                         <label class="form-label">Ano de término</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formD.ano_termino|add_class:'form-control' }}
+                                                {{ formD.d_ano_termino|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>
@@ -330,7 +330,7 @@
                                         <label class="form-label">Instituição</label>
                                         <div class="form-group">
                                             <div class="form-line">
-                                                {{ formD.instituicao|add_class:'form-control' }}
+                                                {{ formD.d_instituicao|add_class:'form-control' }}
                                             </div>
                                         </div>
                                     </div>

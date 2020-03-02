@@ -333,7 +333,7 @@ class Preceptores(models.Model):
         default=''
     )
     # > ENDEREÇO
-    endereço = models.CharField(
+    endereco = models.CharField(
         max_length=100,
         blank=False
     )
@@ -382,7 +382,7 @@ class Preceptores(models.Model):
         choices=BANCOS,
         default=''
     )
-    angencia = models.CharField(
+    agencia = models.CharField(
         max_length=10,
         blank=False
     )
@@ -412,17 +412,17 @@ class Graduacao(models.Model):
         Preceptores,
         on_delete=models.CASCADE
     )
-    curso = models.CharField(
+    g_curso = models.CharField(
         max_length=50, 
         blank=False
     )
-    ano_termino = models.PositiveIntegerField(
+    g_ano_termino = models.PositiveIntegerField(
         default=0, 
         blank=False,
         null=False,
         unique=True
     )
-    instituicao = models.CharField(
+    g_instituicao = models.CharField(
         max_length=50,
         blank=False
     )
@@ -435,17 +435,17 @@ class Residencia(models.Model):
         Preceptores,
         on_delete=models.CASCADE
     )
-    area = models.CharField(
+    r_area = models.CharField(
         max_length=50, 
         blank=False
     )
-    ano_termino = models.PositiveIntegerField(
+    r_ano_termino = models.PositiveIntegerField(
         default=0, 
         blank=False,
         null=False,
         unique=True
     )
-    instituicao = models.CharField(
+    r_instituicao = models.CharField(
         max_length=50,
         blank=False
     )
@@ -457,17 +457,17 @@ class Mestrado(models.Model):
         Preceptores,
         on_delete=models.CASCADE
     )
-    area = models.CharField(
+    m_area = models.CharField(
         max_length=50, 
         blank=False
     )
-    ano_termino = models.PositiveIntegerField(
+    m_ano_termino = models.PositiveIntegerField(
         default=0, 
         blank=False,
         null=False,
         unique=True
     )
-    instituicao = models.CharField(
+    m_instituicao = models.CharField(
         max_length=50,
         blank=False
     )
@@ -479,17 +479,17 @@ class Doutorado(models.Model):
         Preceptores,
         on_delete=models.CASCADE
     )
-    area = models.CharField(
+    d_area = models.CharField(
         max_length=50, 
         blank=False
     )
-    ano_termino = models.PositiveIntegerField(
+    d_ano_termino = models.PositiveIntegerField(
         default=0, 
         blank=False,
         null=False,
         unique=True
     )
-    instituicao = models.CharField(
+    d_instituicao = models.CharField(
         max_length=50,
         blank=False
     )
