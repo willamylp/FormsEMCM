@@ -1,4 +1,4 @@
-{% load static %}
+{% comment %} {% load static %}
 
 <!DOCTYPE html>
 
@@ -30,3 +30,56 @@
 </body>
 
 </html>
+
+{% load static %} {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+{% include "./head.html" %}
+
+<body class="theme-teal">
+    
+    {% include "../PageLoader.html" %}
+
+    <div class="overlay"></div>
+
+    {% include "../Top_Bar.html" %}
+    {% include "./Menu_Left.html" %}
+
+    <section class="content">
+        <div class="body">
+	        <ol class="breadcrumb"><h5>Você está em:</h5>
+                <li>
+                    <a href="{% url 'principal' %}">
+                        <i class="material-icons">home</i> Início
+                    </a>
+                </li>
+                <li>
+                    <i class="material-icons">desktop_windows</i> GERENCIAR HOSTS
+                </li>
+                <li  class="active">
+                    <i class="material-icons">cast_connected</i> Registrar Novo Hosts
+                </li>
+            </ol>
+	    </div>
+        <div class="container-fluid">
+            <!-- Advanced Form Example With Validation -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header bg-teal" align="center">
+                            <h2>FORMULÁRIO DE REGISTRO DE PRECEPTORES</h2>
+                        </div>
+                        {% include "./formPreceptores.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include "../Modal_Info_Sistema.html" %}
+
+    {% include "./scripts.html" %}
+    
+</body>

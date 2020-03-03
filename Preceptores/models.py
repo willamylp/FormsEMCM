@@ -318,7 +318,7 @@ class Preceptores(models.Model):
         blank=False
     )
     RG = models.CharField(
-        max_length=10,
+        max_length=20,
         blank=False,
         null=False,
         unique=True
@@ -334,6 +334,10 @@ class Preceptores(models.Model):
     )
     # > ENDEREÇO
     endereco = models.CharField(
+        max_length=100,
+        blank=False
+    )
+    num_endereco = models.CharField(
         max_length=100,
         blank=False
     )
@@ -362,11 +366,7 @@ class Preceptores(models.Model):
         max_length=20,
         blank=False
     )
-    celular_1 = models.CharField(
-        max_length=20,
-        blank=True
-    )
-    celular_2 = models.CharField(
+    celular = models.CharField(
         max_length=20,
         blank=True
     )

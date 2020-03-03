@@ -1,0 +1,95 @@
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar" style="position: fixed; margin-top: 0.5%;">
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+                <li class="header">MENU DE NAVEGAÇÃO</li>
+                <li>
+                    <a href="{% url 'principal' %}">
+                        <i class="material-icons">home</i>
+                        <span>INÍCIO</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">desktop_windows</i>
+                        <span>GERENCIAR HOSTS</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="#" class="col-teal">
+                                <i class="material-icons">cast_connected</i>
+                                <h5 style="margin-left: 10px;">Registrar Novo Host</h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'ListarPreceptores' %}"> 
+                                <i class="material-icons">playlist_add_check</i>
+                                <h5 style="margin-left: 10px;">Listar Registros de Hosts</h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="material-icons">search</i>
+                                <h5 style="margin-left: 10px;">Buscar Host Específico</h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="material-icons">insert_chart</i>
+                                <h5 style="margin-left: 10px;">Gerar Estatísticas</h5>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">supervisor_account</i>
+                        <span>GERENCIAR USUÁRIOS</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="#">
+                                <i class="material-icons">person_add</i><br>
+                                <h5 style="margin-left: 10px;">Registrar Usuário</h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="material-icons">playlist_add_check</i>
+                                <h5 style="margin-left: 10px;">Listar Registros de Usuários</h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="material-icons">search</i>
+                                <h5 style="margin-left: 10px;">Buscar Usuário Específico</h5>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="../../admin/" target="_blank">
+                        <i class="material-icons">settings</i>
+                        <span>ADMINISTRAR SISTEMA</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- #Menu -->
+        <!-- Footer -->
+        <div class="legal">
+            <div class="copyright">
+                <h5>
+                    <a href="#" data-toggle="modal" data-target="#modalSystemInfo">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        <span>Informações do Sistema</span>
+                    </a>
+                </h5>
+            </div>
+        </div>
+        <!-- #Footer -->
+    </aside>
+    <!-- #END# Left Sidebar -->
+</section>
