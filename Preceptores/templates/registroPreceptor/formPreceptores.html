@@ -594,7 +594,7 @@
 </section> {% endcomment %}
 
 {% load widget_tweaks %}
-<form id="form_validation" method="POST">
+<form id="form_validation" method="POST" action="">
     {% csrf_token %}
     <div class="body">
         <h3 class="col-teal">INFORMAÇÕES PESSOAIS</h3>
@@ -617,7 +617,7 @@
                     </div>
                 </div>
             </div>
-            {% comment %} === {% endcomment %}
+            <!-- === -->
             <div class="col-sm-2">
                 <div class="form-group">
                     <b><span class="marcadorRequired">*</span> CPF</b>
@@ -626,7 +626,7 @@
                     </div>
                 </div>
             </div>
-            {% comment %} === {% endcomment %}
+            <!-- === -->
             <div class="col-sm-2">
                 <div class="form-group">
                     <b><span class="marcadorRequired">*</span> CRM/RN</b>
@@ -635,7 +635,7 @@
                     </div>
                 </div>
             </div>
-            {% comment %} === {% endcomment %}
+            <!-- === -->
             <div class="col-sm-2">
                 <div class="form-group">
                     <b><span class="marcadorRequired">*</span> RG</b>
@@ -645,7 +645,7 @@
                 </div>
             </div>   
         </div>         
-        {% comment %} ----------------------------------------- {% endcomment %}
+        <!-- ----------------------------------------- -->
         <div class="row clearfix">
             <div class="col-sm-2">
                 <div class="form-group ">
@@ -658,7 +658,7 @@
             {% comment %} === {% endcomment %}
             <div class="col-sm-2">
                 <div class="form-group ">
-                    <b><span class="marcadorRequired">*</span> UF do RG</label></b>
+                    <b><span class="marcadorRequired">*</span> ESTADO EMISSOR</label></b>
                     <div class="form-line">
                         {{ form.UF_RG|add_class:'form-control show-tick'|attr:"data-live-search:true" }}
                     </div>
@@ -666,7 +666,7 @@
             </div>
             {% comment %} === {% endcomment %}
             <div class="col-sm-2">
-                <b><span class="marcadorRequired">*</span> Nº TELEFONE</b>
+                <b><span class="marcadorRequired">*</span> TELEFONE</b>
                 <div class="form-group">
                     <div class="form-line">
                         {{ form.telefone|add_class:'form-control' }}
@@ -675,7 +675,7 @@
             </div>
             {% comment %} === {% endcomment %}
             <div class="col-sm-2">
-                <b><span class="marcadorRequired">*</span> Nº CELULAR</b>
+                <b><span class="marcadorRequired">*</span> CELULAR</b>
                 <div class="form-group">
                     <div class="form-line">
                         {{ form.celular|add_class:'form-control' }}
@@ -739,7 +739,7 @@
         </div>
         {% comment %} ----------------------------------------- {% endcomment %}
         <div class="row clearfix">
-            <div class="col-sm-2">
+            <div class="col-sm-4">
                 <b><span class="marcadorRequired">*</span> CIDADE</b>
                 <div class="form-group">
                     <div class="form-line">
@@ -755,7 +755,7 @@
                         {{ form.UF_CEP|add_class:'form-control show-tick' }}
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
         {% comment %} ----------------------------------------- {% endcomment %}
         <div class="row clearfix">
@@ -763,7 +763,7 @@
                 <h3 class="col-teal">INFORMAÇÕES BANCÁRIAS</h3>
                 <hr>
             </div>
-            {% comment %} === {% endcomment %}
+            <!-- === -->
             <div class="col-sm-4">
                 <b><span class="marcadorRequired">*</span> BANCO</b>
                 <div class="form-group">
@@ -772,36 +772,178 @@
                     </div>
                 </div>
             </div>
-            {% comment %} === {% endcomment %}
+            <!-- === -->
             <div class="col-sm-2">
-                <b><span class="marcadorRequired">*</span> AGÊNCIA</b>
+                <b><span class="marcadorRequired">*</span> AGÊNCIA <small>(com dígito)</small></b>
                 <div class="form-group">
                     <div class="form-line">
                         {{ form.agencia|add_class:'form-control show-tick' }}
                     </div>
                 </div>
             </div>
-            {% comment %} === {% endcomment %}
-            <div class="col-sm-2">
-                <b><span class="marcadorRequired">*</span> CONTA</b>
+            <!-- === -->
+            <div class="col-sm-3">
+                <b><span class="marcadorRequired">*</span> CONTA CORRENTE <small>(com dígito)</small></b>
                 <div class="form-group">
                     <div class="form-line">
                         {{ form.conta|add_class:'form-control show-tick' }}
                     </div>
                 </div>
             </div>
-
-
+        </div>
+        <!--  ----------------------------------------- -->
+        <div class="row clearfix">
+            <div class="body">
+                <h3 class="col-teal">DADOS PROFISSIONAIS</h3>
+                <hr>
+                <h4>GRADUAÇÃO</h4>
+            </div>            
+            <!-- === -->
+            <div class="col-sm-4">
+                <b><span class="marcadorRequired">*</span> CURSO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formG.g_curso|add_class:'form-control show-tick' }}
+                    </div>
+                </div>
+            </div>
+            <!-- === -->
+            <div class="col-sm-4">
+                <b><span class="marcadorRequired">*</span> INSTITUIÇÃO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formG.g_instituicao|add_class:'form-control' }}
+                    </div>
+                </div>
+            </div>
+            <!-- === -->
+            <div class="col-sm-2">
+                <b><span class="marcadorRequired">*</span> ANO DE TÉRMINO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formG.g_ano_termino|add_class:'form-control' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ----------------------------------------- -->
+        <div class="row clearfix">
+            <div class="body">
+                <h4>RESIDÊNCIA</h4>
+                <i class="col-red"><small>(Caso não tenha realizado ou terminado, passar para o item seguinte)</small></i>
+            </div>            
+            <!-- === -->
+            <div class="col-sm-4">
+                <b>ÁREA</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formR.r_area|add_class:'form-control show-tick' }}
+                    </div>
+                </div>
+            </div>
+            <!-- === -->
+            <div class="col-sm-4">
+                <b>INSTITUIÇÃO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formR.r_instituicao|add_class:'form-control' }}
+                    </div>
+                </div>
+            </div>
+            <!-- === -->
+            <div class="col-sm-2">
+                <b>ANO DE TÉRMINO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formR.r_ano_termino|add_class:'form-control' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ----------------------------------------- -->
+        <div class="row clearfix">
+            <div class="body">
+                <h4>MESTRADO</h4>
+                <i class="col-red"><small>(Caso não tenha realizado ou terminado, passar para o item seguinte)</small></i>
+            </div>            
+            <!-- === -->
+            <div class="col-sm-4">
+                <b>ÁREA</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formM.m_area|add_class:'form-control show-tick' }}
+                    </div>
+                </div>
+            </div>
+            <!-- === -->
+            <div class="col-sm-4">
+                <b>INSTITUIÇÃO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formM.m_instituicao|add_class:'form-control' }}
+                    </div>
+                </div>
+            </div>
+            <!-- === -->
+            <div class="col-sm-2">
+                <b>ANO DE TÉRMINO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formM.m_ano_termino|add_class:'form-control' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  ----------------------------------------- -->
+        <div class="row clearfix">
+            <div class="body">
+                <h4>DOUTORADO</h4>
+                <i class="col-red"><small>(Caso não tenha realizado ou terminado, passar para o item seguinte)</small></i>
+            </div>            
+            <!-- === -->
+            <div class="col-sm-4">
+                <b>ÁREA</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formD.d_area|add_class:'form-control show-tick' }}
+                    </div>
+                </div>
+            </div>
+            <!-- === -->
+            <div class="col-sm-4">
+                <b>INSTITUIÇÃO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formD.d_instituicao|add_class:'form-control' }}
+                    </div>
+                </div>
+            </div>
+            <!-- === -->
+            <div class="col-sm-2">
+                <b>ANO DE TÉRMINO</b>
+                <div class="form-group">
+                    <div class="form-line">
+                        {{ formD.d_ano_termino|add_class:'form-control' }}
+                    </div>
+                </div>
             </div>
         </div>
         {% comment %} ----------------------------------------- {% endcomment %}
         <div class="row clearfix">
-            <div class="col-md-12">
+            <div class="body">
+                <h3 class="col-teal">EXPERIÊNCIA</h3>
+                <hr>
+                <h4>VÍNCULO PROFISSIONAL</h4>
+            </div>   
+        </div>
+        {% comment %} ----------------------------------------- {% endcomment %}
+        <div class="row clearfix">
+            <div class="col-md-6">
                 <h4><span class="marcadorRequired">*</span> Campos Obrigatórios</h4><br>
             </div>
         </div>
         <div class="row clearfix" align="left">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <button type="submit" class="btn bg-teal btn-block waves-effect">
                     <h4>
                         <span>REGISTRAR</span>

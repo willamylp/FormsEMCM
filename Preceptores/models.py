@@ -1,7 +1,80 @@
 from django.db import models
 from multiselectfield import MultiSelectField
 
-# Create your models here.
+
+class Graduacao(models.Model):
+    g_curso = models.CharField(
+        max_length=50, 
+        blank=False
+    )
+    g_ano_termino = models.PositiveIntegerField(
+        default=0, 
+        blank=False,
+        null=False,
+        unique=False
+    )
+    g_instituicao = models.CharField(
+        max_length=50,
+        blank=False
+    )
+    
+    def __str__(self):
+        return self.curso
+
+class Residencia(models.Model):
+    r_area = models.CharField(
+        max_length=50, 
+        blank=True
+    )
+    r_ano_termino = models.PositiveIntegerField(
+        default=0, 
+        blank=True,
+        null=True,
+        unique=False
+    )
+    r_instituicao = models.CharField(
+        max_length=50,
+        blank=True
+    )
+    def __str__(self):
+        return self.area
+
+class Mestrado(models.Model):
+    m_area = models.CharField(
+        max_length=50, 
+        blank=True
+    )
+    m_ano_termino = models.PositiveIntegerField(
+        default=0, 
+        blank=True,
+        null=True,
+        unique=False
+    )
+    m_instituicao = models.CharField(
+        max_length=50,
+        blank=True
+    )
+    def __str__(self):
+        return self.area
+
+class Doutorado(models.Model):
+    d_area = models.CharField(
+        max_length=50, 
+        blank=True
+    )
+    d_ano_termino = models.PositiveIntegerField(
+        default=0, 
+        blank=True,
+        null=True,
+        unique=False
+    )
+    d_instituicao = models.CharField(
+        max_length=50,
+        blank=True
+    )
+    def __str__(self):
+        return self.area
+
 class Preceptores(models.Model):
     TURNO = (
         ('Matutino', 'MATUTINO'),
@@ -161,7 +234,7 @@ class Preceptores(models.Model):
         ('166', 'BANCO INTER-ATLANTICO S.A'),
         ('630', 'BANCO INTERCAP S.A'),
         ('722', 'BANCO INTERIOR DE SAO PAULO S.A'),
-        ('077', 'BANCO INTERMEDIUM'),
+        ('077', 'BANCO INTER (ANTIGO INTERMEDIUM)'),
         ('616', 'BANCO INTERPACIFICO S.A'),
         ('232', 'BANCO INTERPART S.A'),
         ('223', 'BANCO INTERUNION S.A'),
@@ -390,121 +463,44 @@ class Preceptores(models.Model):
         max_length=30,
         blank=False
     )
-    
-    # #-->>> DADOS PROFISSIONAIS
-    # escolaridade = MultiSelectField(
-    #     blank=False,
-    #     choices=DADOS_PROFISSIONAIS,
-    #     default=''
-    # )
 
     #####
     num_edital = models.CharField(
         max_length=10,
-        blank=False
+        blank=True
     )
-   
+
+    #-->>> CHAVES ESTRANGEIRAS
+    id_graduacao = models.ForeignKey(
+        Graduacao,
+        on_delete=models.CASCADE
+    )
+    id_residencia = models.ForeignKey(
+        Residencia,
+        on_delete=models.CASCADE
+    )
+    id_Mestrado = models.ForeignKey(
+        Mestrado,
+        on_delete=models.CASCADE
+    )
+    id_doutorado = models.ForeignKey(
+        Doutorado,
+        on_delete=models.CASCADE
+    )
+       
     def __str__(self):
         return self.nome
 
-class Graduacao(models.Model):
-    preceptores = models.ForeignKey(
-        Preceptores,
-        on_delete=models.CASCADE
-    )
-    g_curso = models.CharField(
-        max_length=50, 
-        blank=False
-    )
-    g_ano_termino = models.PositiveIntegerField(
-        default=0, 
-        blank=False,
-        null=False,
-        unique=True
-    )
-    g_instituicao = models.CharField(
-        max_length=50,
-        blank=False
-    )
-    
-    def __str__(self):
-        return self.curso
-
-class Residencia(models.Model):
-    preceptores = models.ForeignKey(
-        Preceptores,
-        on_delete=models.CASCADE
-    )
-    r_area = models.CharField(
-        max_length=50, 
-        blank=False
-    )
-    r_ano_termino = models.PositiveIntegerField(
-        default=0, 
-        blank=False,
-        null=False,
-        unique=True
-    )
-    r_instituicao = models.CharField(
-        max_length=50,
-        blank=False
-    )
-    def __str__(self):
-        return self.area
-
-class Mestrado(models.Model):
-    preceptores = models.ForeignKey(
-        Preceptores,
-        on_delete=models.CASCADE
-    )
-    m_area = models.CharField(
-        max_length=50, 
-        blank=False
-    )
-    m_ano_termino = models.PositiveIntegerField(
-        default=0, 
-        blank=False,
-        null=False,
-        unique=True
-    )
-    m_instituicao = models.CharField(
-        max_length=50,
-        blank=False
-    )
-    def __str__(self):
-        return self.area
-
-class Doutorado(models.Model):
-    preceptores = models.ForeignKey(
-        Preceptores,
-        on_delete=models.CASCADE
-    )
-    d_area = models.CharField(
-        max_length=50, 
-        blank=False
-    )
-    d_ano_termino = models.PositiveIntegerField(
-        default=0, 
-        blank=False,
-        null=False,
-        unique=True
-    )
-    d_instituicao = models.CharField(
-        max_length=50,
-        blank=False
-    )
-    def __str__(self):
-        return self.area
     
 
-class Vinculo_Profissional(models.Model):
-    preceptores = models.ForeignKey(
-        Preceptores,
-        on_delete=models.CASCADE
-    )
+# class Vinculo_Profissional(models.Model):
+#     preceptores = models.ForeignKey(
+#         Preceptores,
+#         on_delete=models.CASCADE
+#     )
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
     
 
     

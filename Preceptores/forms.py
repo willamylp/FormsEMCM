@@ -1,5 +1,6 @@
 from .models import Preceptores, Graduacao, Mestrado, Doutorado
 from .models import Preceptores, Graduacao, Residencia, Mestrado, Doutorado
+
 from django import forms
 from django.forms import ModelForm
 
@@ -34,5 +35,4 @@ class FormDoutorado(ModelForm):
     class Meta:
         model = Doutorado
         fields = '__all__'
-        labels = {}
         widgets = {}   

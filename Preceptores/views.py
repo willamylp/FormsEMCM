@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import FormPreceptores, FormGraduacao, FormResidencia, FormMestrado, FormDoutorado
 from .models import Preceptores, Graduacao, Residencia, Mestrado, Doutorado
+
 from django.contrib import messages
 
 from django.shortcuts import get_object_or_404, redirect, render
@@ -8,27 +9,27 @@ from django.shortcuts import get_object_or_404, redirect, render
 # Create your views here.
 
 def RegistroPreceptor(request):
-    form = FormPreceptores(request.POST or None)
     formG = FormGraduacao(request.POST or None)
     formR = FormResidencia(request.POST or None)
     formM = FormMestrado(request.POST or None)
     formD = FormDoutorado(request.POST or None)
-    if((form.is_valid()) and (formG.is_valid()) and (formR.is_valid()) and (formM.is_valid()) and (formD.is_valid())):
-        form.save()
+    form = FormPreceptores(request.POST or None)
+    if((formG.is_valid()) and (formR.is_valid()) and (formM.is_valid()) and (formD.is_valid()) and (form.is_valid())):
         formG.save()
         formR.save()
         formM.save()
         formD.save()
+        form.save()
         messages.success(request, 'Preceptor Registrado com Sucesso!')
-        return redirect('../ListarPreceptores')
+        return redirect('../ListarPreceptores')    
     return render(
         request,
         'registroPreceptor/RegistrarPreceptor.html', {
-            'form': form,
             'formG': formG,
             'formR': formR,
             'formM': formM,
-            'formD': formD
+            'formD': formD,
+            'form': form
         }
     )
 
