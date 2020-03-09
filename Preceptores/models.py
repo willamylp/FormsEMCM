@@ -441,12 +441,13 @@ class Graduacao(models.Model):
     )
     g_curso = models.CharField(
         max_length=50, 
-        blank=False
+        blank=False,
+        default=''
     )
     g_ano_termino = models.PositiveIntegerField(
-        default=0, 
         blank=False,
-        null=False
+        null=False,
+        default=''
     )
     g_instituicao = models.CharField(
         max_length=50,
@@ -466,9 +467,9 @@ class Residencia(models.Model):
         blank=True
     )
     r_ano_termino = models.PositiveIntegerField(
-        default=0, 
         blank=True,
-        null=True
+        null=True,
+        default=''
     )
     r_instituicao = models.CharField(
         max_length=50,
@@ -489,9 +490,9 @@ class Mestrado(models.Model):
         null=True
     )
     m_ano_termino = models.PositiveIntegerField(
-        default=0, 
         blank=True,
-        null=True
+        null=True,
+        default=''
     )
     m_instituicao = models.CharField(
         max_length=50,
@@ -513,9 +514,9 @@ class Doutorado(models.Model):
         null=True
     )
     d_ano_termino = models.PositiveIntegerField(
-        default=0,
         blank=True,
-        null=True
+        null=True,
+        default=''
     )
     d_instituicao = models.CharField(
         max_length=50,

@@ -16,44 +16,53 @@ def RegistroPreceptor(request):
     # print('>>>>>>', Preceptores.objects.last())
     #teste = Preceptores.objects.get(pk=1)
     #print(teste.nome)
+    # request.POST['CPF'] = 'XXXXXX'
+    #print("Request >>>>", request.POST.get('CPF', False))
+    #teste = Preceptores.objects.filter(CPF=234234)
+    #print("PK >>>> ",  Preceptores.objects.get(pk=teste))
+
     if(form.is_valid()):
         form.save()
-        Graduacao.objects.create(
-            g_preceptores=Preceptores.objects.get(
-                pk=Preceptores.objects.last()
-            ),
-            g_curso="teste!",
-            g_ano_termino=2019,
-            g_instituicao="UFRN"
-        ).save()
+        if(request.POST['g_curso'] != ''):
+            Graduacao.objects.create(
+                g_preceptores=Preceptores.objects.get(
+                    pk=Preceptores.objects.filter(CPF=request.POST['CPF'])[:1]
+                ),
+                g_curso=request.POST['g_curso'],
+                g_ano_termino=request.POST['g_ano_termino'],
+                g_instituicao=request.POST['g_instituicao']
+            ).save()
+        elif(request.POST['g_curso'] == ''):
+            return render(
+                request,
+                'registroPreceptor/RegistrarPreceptor.html', {
+                    'form': form, 'formG': formG, 'formR': formR, 'formM': formM, 'formD': formD
+                }
+            )
+        #------------------------------------- 
+        if((request.POST['r_area'] != '') or (request.POST['r_ano_termino'] != '') or (request.POST['r_instituicao'] != '')):
+            if((request.POST['r_area'] == '') or (request.POST['r_ano_termino'] == '') or (request.POST['r_instituicao'] == '')):
+                return render(
+                    request,
+                    'registroPreceptor/RegistrarPreceptor.html', {
+                        'form': form,
+                        'formG': formG,
+                        'formR': formR,
+                        'formM': formM,
+                        'formD': formD
+                    }
+                )
+            else:
+                Residencia.objects.create(
+                    r_preceptores=Preceptores.objects.get(
+                        pk=Preceptores.objects.filter(CPF=request.POST['CPF'])[:1]
+                    ),
+                    r_area=request.POST['r_curso'],
+                    r_ano_termino=request.POST['r_ano_termino'],
+                    r_instituicao=request.POST['r_instituicao']
+                ).save()
+        #-------------------------------------
 
- 
-    # Graduacao.objects.create(
-    #     formG.Meta.model.g_curso=""
-    # )
-
-    # Graduacao.objects.filter(id=Preceptores.objects.first())
-    # print('---->', Graduacao.objects.filter(id=Preceptores.objects.first()))
-    # graduacao.g_preceptores = Preceptores.objects.last()
-    # graduacao.save()
-    # formG.Meta.model.g_preceptores = Preceptores.objects.last()
-    # print(formG.Meta.model.g_preceptores)
-
-    # formR.Meta.model.r_preceptores = Preceptores.objects.last()
-    # formM.Meta.model.m_preceptores = Preceptores.objects.last()
-    # formD.Meta.model.d_preceptores = Preceptores.objects.last()
-
-    #print(Graduacao.objects.id_g_preceptores)
-    #print(formG.is_valid())
-    if((formG.is_valid()) and (formR.is_valid()) and (formM.is_valid()) and (formD.is_valid())):
-    # if(formG.is_valid()):
-        # form.save()
-        formG.save()
-        formR.save()
-        formM.save()
-        formD.save()
-        messages.success(request, 'Preceptor Registrado com Sucesso!')
-        return redirect('../ListarPreceptores')    
     return render(
         request,
         'registroPreceptor/RegistrarPreceptor.html', {
