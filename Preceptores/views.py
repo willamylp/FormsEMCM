@@ -5,7 +5,6 @@ from .models import Preceptores, Graduacao, Residencia, Mestrado, Doutorado
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 
-# Create your views here.
 
 def RegistroPreceptor(request):
     form = FormPreceptores(request.POST or None)
@@ -13,13 +12,6 @@ def RegistroPreceptor(request):
     formR = FormResidencia(request.POST or None)
     formM = FormMestrado(request.POST or None)
     formD = FormDoutorado(request.POST or None)
-    # print('>>>>>>', Preceptores.objects.last())
-    #teste = Preceptores.objects.get(pk=1)
-    #print(teste.nome)
-    # request.POST['CPF'] = 'XXXXXX'
-    #print("Request >>>>", request.POST.get('CPF', False))
-    #teste = Preceptores.objects.filter(CPF=234234)
-    #print("PK >>>> ",  Preceptores.objects.get(pk=teste))
 
     if(form.is_valid()):
         form.save()
@@ -41,28 +33,36 @@ def RegistroPreceptor(request):
             )
         #------------------------------------- 
         if((request.POST['r_area'] != '') or (request.POST['r_ano_termino'] != '') or (request.POST['r_instituicao'] != '')):
-            if((request.POST['r_area'] == '') or (request.POST['r_ano_termino'] == '') or (request.POST['r_instituicao'] == '')):
-                return render(
-                    request,
-                    'registroPreceptor/RegistrarPreceptor.html', {
-                        'form': form,
-                        'formG': formG,
-                        'formR': formR,
-                        'formM': formM,
-                        'formD': formD
-                    }
-                )
-            else:
-                Residencia.objects.create(
-                    r_preceptores=Preceptores.objects.get(
-                        pk=Preceptores.objects.filter(CPF=request.POST['CPF'])[:1]
-                    ),
-                    r_area=request.POST['r_curso'],
-                    r_ano_termino=request.POST['r_ano_termino'],
-                    r_instituicao=request.POST['r_instituicao']
-                ).save()
-        #-------------------------------------
-
+            Residencia.objects.create(
+                r_preceptores=Preceptores.objects.get(
+                    pk=Preceptores.objects.filter(CPF=request.POST['CPF'])[:1]
+                ),
+                r_area=request.POST['r_area'],
+                r_ano_termino=request.POST['r_ano_termino'],
+                r_instituicao=request.POST['r_instituicao']
+            ).save()
+        #------------------------------------- 
+        if((request.POST['m_area'] != '') or (request.POST['m_ano_termino'] != '') or (request.POST['m_instituicao'] != '')):
+            Mestrado.objects.create(
+                m_preceptores=Preceptores.objects.get(
+                    pk=Preceptores.objects.filter(CPF=request.POST['CPF'])[:1]
+                ),
+                m_area=request.POST['m_area'],
+                m_ano_termino=request.POST['m_ano_termino'],
+                m_instituicao=request.POST['m_instituicao']
+            ).save()
+        #------------------------------------- 
+        if((request.POST['d_area'] != '') or (request.POST['d_ano_termino'] != '') or (request.POST['d_instituicao'] != '')):
+            Doutorado.objects.create(
+                d_preceptores=Preceptores.objects.get(
+                    pk=Preceptores.objects.filter(CPF=request.POST['CPF'])[:1]
+                ),
+                d_area=request.POST['d_area'],
+                d_ano_termino=request.POST['d_ano_termino'],
+                d_instituicao=request.POST['d_instituicao']
+            ).save()
+        #------------------------------------- 
+        return redirect('../ListarPreceptores')
     return render(
         request,
         'registroPreceptor/RegistrarPreceptor.html', {
