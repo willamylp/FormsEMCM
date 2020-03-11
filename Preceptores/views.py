@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import FormPreceptores, FormGraduacao, FormResidencia, FormMestrado, FormDoutorado
-from .models import Preceptores, Graduacao, Residencia, Mestrado, Doutorado
+from .forms import FormPreceptores, FormGraduacao, FormResidencia, FormMestrado, FormDoutorado, FormVinculo
+from .models import Preceptores, Graduacao, Residencia, Mestrado, Doutorado, Vinculo_Profissional
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
@@ -12,6 +12,7 @@ def RegistroPreceptor(request):
     formR = FormResidencia(request.POST or None)
     formM = FormMestrado(request.POST or None)
     formD = FormDoutorado(request.POST or None)
+    formV = FormVinculo(request.POST or None)
 
     if(form.is_valid()):
         form.save()
@@ -28,7 +29,7 @@ def RegistroPreceptor(request):
             return render(
                 request,
                 'registroPreceptor/RegistrarPreceptor.html', {
-                    'form': form, 'formG': formG, 'formR': formR, 'formM': formM, 'formD': formD
+                    'form': form, 'formG': formG, 'formR': formR, 'formM': formM, 'formD': formD, 'formV': formV
                 }
             )
         #------------------------------------- 
@@ -61,7 +62,8 @@ def RegistroPreceptor(request):
                 d_ano_termino=request.POST['d_ano_termino'],
                 d_instituicao=request.POST['d_instituicao']
             ).save()
-        #------------------------------------- 
+        #-------------------------------------
+        
         return redirect('../ListarPreceptores')
     return render(
         request,
@@ -70,7 +72,8 @@ def RegistroPreceptor(request):
             'formG': formG,
             'formR': formR,
             'formM': formM,
-            'formD': formD
+            'formD': formD,
+            'formV': formV
         }
     )
 
@@ -80,7 +83,7 @@ def ListarPreceptores(request):
     residencia = Residencia.objects.all().values()
     mestrado = Mestrado.objects.all().values()
     doutorado = Doutorado.objects.all().values()
-    
+    vinculo = Vinculo_Profissional.objects.all().values()
     return render(
         request,
         'listagemPreceptores/ListarPreceptores.html', {
@@ -88,6 +91,7 @@ def ListarPreceptores(request):
             'graduacao': graduacao, 
             'residencia': residencia,
             'mestrado': mestrado,
-            'doutorado': doutorado
+            'doutorado': doutorado,
+            'vinculo': vinculo
         }
     )

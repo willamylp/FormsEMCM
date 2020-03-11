@@ -308,7 +308,7 @@ class Preceptores(models.Model):
         unique=True
     )
     CRM_RN = models.PositiveIntegerField(
-        default=0, 
+        default='', 
         blank=False,
         null=False,
         unique=True
@@ -526,16 +526,40 @@ class Doutorado(models.Model):
     def __str__(self):
         return self.d_area
 
+class Vinculo_Profissional(models.Model):
+    VINCULO_PROFISSIONAL = (
+        ('SESAP-HRC', ' SECRETARIA DE ESTADO DA SAÚDE PÚBLICA – HOSPITAL REGIONAL DE CAICÓ'),
+        ('SESAP-HRMC', 'SECRETARIA DE ESTADO DA SAÚDE PÚBLICA – HOSPITAL REGIONAL MARIANO COELHO'),
+        ('SESAP-HGT', 'SECRETARIA DE ESTADO DA SAÚDE PÚBLICA – HOSPITAL GISELDA TRIGUEIRO'),
+        ('SESAP-HMWG', 'SECRETARIA DE ESTADO DA SAÚDE PÚBLICA – HOSPITAL MONSENHOR WALFREDO GURGEL'),
+        ('SESAP-OUTRO', 'SECRETARIA DE ESTADO DA SAÚDE PÚBLICA – OUTRO:'),
+        ('SMS-CAICO', 'SECRETARIA MUNICIPAL DE SAÚDE DE CAICÓ'),
+        ('SMS-CURRAIS_NOVOS', 'SECRETARIA MUNICIPAL DE SAÚDE DE CURRAIS NOVOS'),
+        ('SMS-SANTA_CRUZ', 'SECRETARIA MUNICIPAL DE SAÚDE DE SANTA CRUZ'),
+        ('OUTRO', 'OUTRO')
+    )
 
+    preceptores = models.ForeignKey(
+        Preceptores,
+        on_delete=models.CASCADE
+    )
+    vinculo = MultiSelectField(
+        blank=False,
+        choices=VINCULO_PROFISSIONAL        
+    )
+    sesap_outro = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+    )
+    outro_vinculo = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+    )
 
-# class Vinculo_Profissional(models.Model):
-#     preceptores = models.ForeignKey(
-#         Preceptores,
-#         on_delete=models.CASCADE
-#     )
-
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.vinculo
     
 
     

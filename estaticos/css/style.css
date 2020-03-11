@@ -5105,8 +5105,10 @@ section.contentLoading {
   margin-bottom: 0; }
 
 .form-group {
-  width: 100%;
-  margin-bottom: 25px; }
+    width: 100%;
+    margin-bottom: 25px;
+    margin-left: 5px;
+  }
   .form-group .form-control {
     width: 100%;
     border: none;

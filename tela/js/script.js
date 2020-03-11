@@ -56,5 +56,4 @@
             $(".CheckboxMagico8").prop('checked', "");
         }
     });
-
 });

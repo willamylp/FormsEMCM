@@ -1,4 +1,5 @@
 {% comment %} {% load widget_tweaks %}
+
 <section class="container">
     <div class="container-fluid">
         <!-- ---------------------- Formulario preceptores ----------------------------------- -->
@@ -438,7 +439,7 @@
                                                 <div class="form-line">
                                                     <input type="text" class="form-control CaixaMagica2"
                                                         style="height: 20px;  padding: 0px 0px;"
-                                                        placeholder="Outro tipo de vinculo proficional:" />
+                                                        placeholder="Outro tipo de vinculo Profissional:" />
                                                 </div>
                                             </div>
                                         </label>
@@ -934,7 +935,67 @@
                 <h3 class="col-teal">EXPERIÊNCIA</h3>
                 <hr>
                 <h4>VÍNCULO PROFISSIONAL</h4>
-            </div>   
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group form-float">
+                    <div class="demo-checkbox">
+                        {% for value, text in formV.vinculo.field.choices %}
+
+                        {% comment %} === {% endcomment %}
+                        {% if value == "SESAP-OUTRO" %}
+                        <input type="checkbox"
+                            id="id_vinculo_{{ forloop.counter0 }}"
+                            name="vinculo"
+                            class="filled-in chk-col-teal CheckboxMagico"
+                            value="{{ value }}"
+                            {% if value in listPag %} checked="checked" {% endif %}
+                        />
+                        <label for="id_vinculo_{{ forloop.counter0 }}">{{ text }} <strong class="col-red">(ESPECIFICAR A UNIDADE ABAIXO)</strong></label>
+                        <div class="row clearfix">
+                            <div class="col-sm-8" style="margin-bottom: 0px; min-width: 70%;">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        {{ formV.sesap_outro|add_class:"form-control CaixaMagica"}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% comment %} === {% endcomment %}
+                        {% elif value == "OUTRO" %}
+                        <input type="checkbox"
+                            id="id_vinculo_{{ forloop.counter0 }}"
+                            name="vinculo"
+                            class="filled-in chk-col-teal CheckboxMagico2"
+                            value="{{ value }}"
+                            {% if value in listPag %} checked="checked" {% endif %}
+                        />
+                        <label for="id_vinculo_{{ forloop.counter0 }}" style="min-width: 100%;">
+                            <div class="row clearfix">
+                                <div class="col-sm-6" style="margin-bottom: 0px; min-width: 70%; margin-top: -10px;">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            {{ formV.outro_vinculo|add_class:"form-control CaixaMagica2"|attr:"placeholder:Outro tipo de Vínculo Profissional"}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        {% comment %} === {% endcomment %}
+                        {% else %}
+                        <input type="checkbox"
+                            id="id_vinculo_{{ forloop.counter0 }}"
+                            name="vinculo"
+                            class="filled-in chk-col-teal"
+                            value="{{ value }}"
+                            {% if value in listPag %} checked="checked" {% endif %}
+                        />
+                        <label for="id_vinculo_{{ forloop.counter0 }}">{{ text }}</label>
+                        {% endif %}  
+                        <br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
         {% comment %} ----------------------------------------- {% endcomment %}
         <div class="row clearfix">
