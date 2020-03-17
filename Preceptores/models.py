@@ -539,7 +539,7 @@ class Vinculo_Profissional(models.Model):
         ('OUTRO', 'OUTRO')
     )
 
-    preceptores = models.ForeignKey(
+    v_preceptores = models.ForeignKey(
         Preceptores,
         on_delete=models.CASCADE
     )

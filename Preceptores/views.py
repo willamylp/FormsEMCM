@@ -63,8 +63,22 @@ def RegistroPreceptor(request):
                 d_instituicao=request.POST['d_instituicao']
             ).save()
         #-------------------------------------
-        
-        return redirect('../ListarPreceptores')
+        dic = dict(request.POST)
+        if('vinculo' in dic.keys()):
+            vAux = dic['vinculo']
+            Vinculo_Profissional.objects.create(
+                v_preceptores=Preceptores.objects.get(
+                    pk=Preceptores.objects.filter(
+                        CPF=request.POST['CPF']
+                    )[:1]
+                ),
+                vinculo=vAux[:],
+                sesap_outro=request.POST['sesap_outro'],
+                outro_vinculo=request.POST['outro_vinculo']
+            ).save()
+        #-------------------------------------
+
+        # return redirect('../ListarPreceptores')
     return render(
         request,
         'registroPreceptor/RegistrarPreceptor.html', {

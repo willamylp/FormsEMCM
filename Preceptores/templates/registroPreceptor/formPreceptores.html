@@ -948,7 +948,7 @@
                             name="vinculo"
                             class="filled-in chk-col-teal CheckboxMagico"
                             value="{{ value }}"
-                            {% if value in listPag %} checked="checked" {% endif %}
+                            {% if value in listVinc %} checked="checked" {% endif %}
                         />
                         <label for="id_vinculo_{{ forloop.counter0 }}">{{ text }} <strong class="col-red">(ESPECIFICAR A UNIDADE ABAIXO)</strong></label>
                         <div class="row clearfix">
@@ -967,7 +967,7 @@
                             name="vinculo"
                             class="filled-in chk-col-teal CheckboxMagico2"
                             value="{{ value }}"
-                            {% if value in listPag %} checked="checked" {% endif %}
+                            {% if value in listVinc %} checked="checked" {% endif %}
                         />
                         <label for="id_vinculo_{{ forloop.counter0 }}" style="min-width: 100%;">
                             <div class="row clearfix">
@@ -987,7 +987,7 @@
                             name="vinculo"
                             class="filled-in chk-col-teal"
                             value="{{ value }}"
-                            {% if value in listPag %} checked="checked" {% endif %}
+                            {% if value in listVinc %} checked="checked" {% endif %}
                         />
                         <label for="id_vinculo_{{ forloop.counter0 }}">{{ text }}</label>
                         {% endif %}  

@@ -1,4 +1,3 @@
-
 $(function () {
     $(".CaixaMagica").on("keyup", function (e) {
         if (this.value != "") {
