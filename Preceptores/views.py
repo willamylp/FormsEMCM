@@ -77,7 +77,7 @@ def RegistroPreceptor(request):
                 outro_vinculo=request.POST['outro_vinculo']
             ).save()
         #-------------------------------------
-
+        
         # return redirect('../ListarPreceptores')
     return render(
         request,

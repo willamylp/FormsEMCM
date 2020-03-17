@@ -2,11 +2,6 @@ from django.db import models
 from multiselectfield import MultiSelectField
 
 class Preceptores(models.Model):
-    # TURNO = (
-    #     ('Matutino', 'MATUTINO'),
-    #     ('Vespertino', 'VESPERTINO'),
-    #     ('Noturno', 'NOTURNO')
-    # )
     ESTADOS = (
         ('Acre', 'AC'),
         ('Alagoas', 'AL'),
@@ -298,141 +293,77 @@ class Preceptores(models.Model):
 
     #-->>> INFORMAÇÕES PESSOAIS
     nome = models.CharField(
-        max_length=100, 
-        blank=False
+        max_length=100, blank=False
     )
     CPF = models.CharField(
-        max_length=15,
-        blank=False,
-        null=False,
-        unique=True
+        max_length=15, blank=False, null=False, unique=True
     )
     CRM_RN = models.PositiveIntegerField(
-        default='', 
-        blank=False,
-        null=False,
-        unique=True
+        blank=False, null=False, unique=True, default=''
     )
     data_nascimento = models.DateField(
         blank=False
     )
     RG = models.CharField(
-        max_length=20,
-        blank=False,
-        null=False,
-        unique=True
+        max_length=20, blank=False, null=False, unique=True
     )
     emissor_RG = models.CharField(
-        max_length=50,
-        blank=False
+        max_length=50, blank=False
     )
     UF_RG = models.CharField(
-        max_length=30,
-        choices=ESTADOS,
-        default=''
+        max_length=30, choices=ESTADOS, default=''
     )
     # > ENDEREÇO
     endereco = models.CharField(
-        max_length=100,
-        blank=False
+        max_length=100, blank=False
     )
     num_endereco = models.CharField(
-        max_length=100,
-        blank=False
+        max_length=100, blank=False
     )
     complemento = models.CharField(
-        max_length=100,
-        blank=False
+        max_length=100, blank=False
     )
     bairro = models.CharField(
         max_length=100, blank=False
     )
     CEP = models.CharField(
-        max_length=10,
-        blank=False
+        max_length=10, blank=False
     )
     cidade = models.CharField(
-        max_length=100,
-        blank=False
+        max_length=100, blank=False
     )
     UF_CEP = models.CharField(
-        max_length=30,
-        choices=ESTADOS,
-        default=''
+        max_length=30, choices=ESTADOS, default=''
     )
     # > CONTATO
     telefone = models.CharField(
-        max_length=20,
-        blank=False
+        max_length=20, blank=False
     )
     celular = models.CharField(
-        max_length=20,
-        blank=True
+        max_length=20, blank=True
     )
     email = models.CharField(
-        max_length=100,
-        blank=False
+        max_length=100, blank=False
     )
 
     #-->>> DADOS BANCÁRIOS
     banco = models.CharField(
-        max_length=200,
-        blank=False,
-        choices=BANCOS,
-        default=''
+        max_length=200, blank=False,
+        choices=BANCOS, default=''
     )
     agencia = models.CharField(
-        max_length=10,
-        blank=False
+        max_length=10, blank=False
     )
     conta = models.CharField(
-        max_length=30,
-        blank=False
+        max_length=30, blank=False
     )
 
-    #####
     num_edital = models.CharField(
-        max_length=10,
-        blank=True
+        max_length=10, blank=True
     )
-
-    #-->>> CHAVES ESTRANGEIRAS
-    # graduacao = models.ForeignKey(
-    #     Graduacao,
-    #     on_delete=models.CASCADE
-    # )
-    # residencia = models.ForeignKey(
-    #     Residencia,
-    #     on_delete=models.CASCADE
-    # )
-    # mestrado = models.ForeignKey(
-    #     Mestrado,
-    #     on_delete=models.CASCADE
-    # )
-    # doutorado = models.ForeignKey(
-    #     Doutorado,
-    #     on_delete=models.CASCADE
-    # )
-       
+  
     def __str__(self):
         return self.nome
-
-# class Titulacoes(models.Model):
-#     area = models.CharField(
-#         max_length=50, 
-#         blank=True
-#     )
-#     ano_termino = models.PositiveIntegerField(
-#         default=0, 
-#         blank=True,
-#         null=True
-#     )
-#     instituicao = models.CharField(
-#         max_length=50,
-#         blank=True
-#     )
-#     def __str__(self):
-#         return self.area
 
 class Graduacao(models.Model):
     g_preceptores = models.OneToOneField(
@@ -440,18 +371,13 @@ class Graduacao(models.Model):
         on_delete=models.CASCADE
     )
     g_curso = models.CharField(
-        max_length=50, 
-        blank=False,
-        default=''
+        max_length=50, blank=False, default=''
     )
     g_ano_termino = models.PositiveIntegerField(
-        blank=False,
-        null=False,
-        default=''
+        blank=False, null=False, default=''
     )
     g_instituicao = models.CharField(
-        max_length=50,
-        blank=False
+        max_length=50, blank=False
     )
     
     def __str__(self):
@@ -463,17 +389,13 @@ class Residencia(models.Model):
         on_delete=models.CASCADE
     )
     r_area = models.CharField(
-        max_length=50, 
-        blank=True
+        max_length=50, blank=True, null=True
     )
     r_ano_termino = models.PositiveIntegerField(
-        blank=True,
-        null=True,
-        default=''
+        blank=True, null=True, default=''
     )
     r_instituicao = models.CharField(
-        max_length=50,
-        blank=True
+        max_length=50, blank=True
     )
     def __str__(self):
         return self.r_area
@@ -485,19 +407,13 @@ class Mestrado(models.Model):
         null=True
     )
     m_area = models.CharField(
-        max_length=50, 
-        blank=True,
-        null=True
+        max_length=50, blank=True, null=True
     )
     m_ano_termino = models.PositiveIntegerField(
-        blank=True,
-        null=True,
-        default=''
+        blank=True, null=True, default=''
     )
     m_instituicao = models.CharField(
-        max_length=50,
-        blank=True,
-        null=True
+        max_length=50, blank=True, null=True
     )
     def __str__(self):
         return self.m_area
@@ -509,19 +425,13 @@ class Doutorado(models.Model):
         null=True
     )
     d_area = models.CharField(
-        max_length=50, 
-        blank=True,
-        null=True
+        max_length=50, blank=True, null=True
     )
     d_ano_termino = models.PositiveIntegerField(
-        blank=True,
-        null=True,
-        default=''
+        blank=True, null=True, default=''
     )
     d_instituicao = models.CharField(
-        max_length=50,
-        blank=True,
-        null=True
+        max_length=50, blank=True, null=True
     )
     def __str__(self):
         return self.d_area
@@ -544,24 +454,61 @@ class Vinculo_Profissional(models.Model):
         on_delete=models.CASCADE
     )
     vinculo = MultiSelectField(
-        blank=False,
-        choices=VINCULO_PROFISSIONAL        
+        blank=False, choices=VINCULO_PROFISSIONAL        
     )
     sesap_outro = models.CharField(
-        max_length=100,
-        blank=True,
-        null=True
+        max_length=100, blank=True, null=True
     )
     outro_vinculo = models.CharField(
-        max_length=100,
-        blank=True,
-        null=True
+        max_length=100, blank=True, null=True
     )
 
     def __str__(self):
         return self.vinculo
     
+class Horarios(models.Model):
+    DIAS_SEMANA = (
+        ('Segunda', 'SEGUNDA-FEIRA'),
+        ('Terca', 'TERÇA-FEIRA'),
+        ('Quarta', 'QUARTA-FEIRA'),
+        ('Quinta', 'QUINTA-FEIRA'),
+        ('Sexta', 'SEXTA-FEIRA'),
+        ('Sabado', 'SÁBADO'),
+        ('Domingo', 'DOMINGO')
+    )
 
+    h_preceptores = models.ForeignKey(
+        Preceptores,
+        on_delete=models.CASCADE
+    )
+
+    dias = MultiSelectField(
+        blank=False, choices=DIAS_SEMANA
+    )
+    h_segunda = models.CharField(
+        max_length=50, blank=True, null=True
+    )
+    h_terca = models.CharField(
+        max_length=50, blank=True, null=True
+    )
+    h_quarta = models.CharField(
+        max_length=50, blank=True, null=True
+    )
+    h_quinta = models.CharField(
+        max_length=50, blank=True, null=True
+    )
+    h_sexta = models.CharField(
+        max_length=50, blank=True, null=True
+    )
+    h_sabado = models.CharField(
+        max_length=50, blank=True, null=True
+    )
+    h_domingo = models.CharField(
+        max_length=50, blank=True, null=True
+    )
+    
+    def __str__(self):
+        return self.dias
     
 
     
